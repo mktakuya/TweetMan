@@ -5,6 +5,9 @@ from datetime import datetime
 from tweetman import TweetMan
 import testsettings
 
+tweet = """{0}
+Tweet Man {1} test."""
+
 class TweetManTest(unittest.TestCase):
     def setUp(self):
         self.tweetman = TweetMan(testsettings.CONSUMER_KEY,
@@ -17,10 +20,7 @@ class TweetManTest(unittest.TestCase):
     def test_send_tweet(self):
         now = datetime.now()
         now = now.strftime('%Y/%m/%d %H:%M:%S')
-        self.tweetman.send_tweet(
-u"""{0}
-Tweet Man send_tweet test."""
-.format(now))
+        self.tweetman.send_tweet(tweet.format(now, 'send_tweet'))
 
 if __name__ == '__main__':
     unittest.main()
